@@ -1,6 +1,8 @@
 package com.dunesoftware.tempstation.controller;
 
+import com.dunesoftware.tempstation.entity.ITemperatureFromToday;
 import com.dunesoftware.tempstation.entity.Temperature;
+import com.dunesoftware.tempstation.entity.TemperatureGroup;
 import com.dunesoftware.tempstation.service.TemperatureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @Slf4j
@@ -46,5 +49,10 @@ public class TemperatureController {
             temperatureService.saveTemperature(t,h,l);
         }
         return new ResponseEntity<>("Temperature registered",HttpStatus.OK);
+    }
+
+    @GetMapping("/getTodayTemperature")
+    public ResponseEntity<List<TemperatureGroup>> getTodayTemperature() {
+        return new ResponseEntity<>(temperatureService.getTodayTemperature(),HttpStatus.OK);
     }
 }
