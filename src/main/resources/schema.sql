@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS temperaturestation;
+CREATE SCHEMA IF NOT EXISTS temperaturestation;
 CREATE TABLE IF NOT EXISTS temperaturestation.temperature (
-	id INT NOT NULL,
+    id INT NOT NULL,
     measure_timestamp TIMESTAMP NOT NULL,
     temperature DOUBLE,
     humidity DOUBLE,
